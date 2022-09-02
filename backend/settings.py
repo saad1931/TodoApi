@@ -1,3 +1,4 @@
+import os
 import dj_database_url
 import django_heroku
 from pathlib import Path
@@ -15,7 +16,7 @@ SECRET_KEY = 'django-insecure-+-(g2q7=wm9hz+973m2uqd55123%wri2qi^2rv!uf0tzw9mjn^
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['<url>','10.0.0.2','127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -76,6 +77,9 @@ DATABASES = {
     }
 
 
+    
+
+
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -109,10 +113,11 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
-
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+django_heroku.settings(locals())
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
